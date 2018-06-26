@@ -1,4 +1,4 @@
-{% for node_name, node_ip in nodes.items() %}
+{% for node_name, node_ip in nodes %}
 ---
 schema: promenade/KubernetesNode/v1
 metadata:

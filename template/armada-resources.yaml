@@ -236,7 +236,7 @@ metadata:
       dest:
         path: '.values.secrets.anchor.tls.key'
 {% set count = 0 %}
-{% for node_name, node_ip in nodes.items() %}
+{% for node_name, node_ip in nodes %}
     -
       src:
         schema: deckhand/Certificate/v1
@@ -306,7 +306,7 @@ data:
         etcd: quay.io/coreos/etcd:v3.2.14
         etcdctl: quay.io/coreos/etcd:v3.2.14
     nodes:
-{% for node_name in nodes.keys() %}
+{% for node_name in node_keys %}
       - name: {{ node_name }}
         tls:
           client:
@@ -403,7 +403,7 @@ data:
         CLUSTER_TYPE:
           - k8s
           - bgp
-        IP_AUTODETECTION_METHOD: interface= {{ genesis.mgmt_interface }}
+        IP_AUTODETECTION_METHOD: interface={{ genesis.mgmt_interface }}
         WAIT_FOR_STORAGE: "true"
 
     endpoints:
@@ -819,7 +819,7 @@ metadata:
       dest:
         path: '.values.secrets.anchor.tls.key'
 {% set count = 0 %}
-{% for node_name in nodes.keys() %}
+{% for node_name in node_keys %}
     -
       src:
         schema: deckhand/Certificate/v1
@@ -837,7 +837,7 @@ metadata:
     -
       src:
         schema: deckhand/Certificate/v1
-        name: kubernetes-etcd-{{ node_name }}]-peer
+        name: kubernetes-etcd-{{ node_name }}-peer
         path: .
       dest:
         path: '.values.nodes[{{ count }}].tls.peer.cert'
@@ -886,7 +886,7 @@ data:
         etcd: quay.io/coreos/etcd:v3.2.14
         etcdctl: quay.io/coreos/etcd:v3.2.14
     nodes:
-{% for node_name in nodes.keys() %}
+{% for node_name in node_keys %}
       - name: {{ node_name }}
         tls:
           client:
