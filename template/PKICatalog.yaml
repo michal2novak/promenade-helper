@@ -23,7 +23,7 @@ data:
         - document_name: kubelet-genesis
           common_name: system:node:{{ genesis.hostname }}
           hosts:
-            - {{ genesis.ip }}
+            - {{ genesis.hostname }}
             - 192.168.77.10
           groups:
             - system:nodes
