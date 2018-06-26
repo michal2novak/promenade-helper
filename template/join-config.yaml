@@ -1,0 +1,23 @@
+{% for node_name, node_ip in nodes.items() %}
+---
+schema: promenade/KubernetesNode/v1
+metadata:
+  schema: metadata/Document/v1
+  name: {{ node_name }}
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  hostname: {{ node_name }}
+  ip: {{ node_ip}}
+  join_ip: {{ genesis.ip }}
+  labels:
+    dynamic:
+      - calico-etcd=enabled
+      - kubernetes-apiserver=enabled
+      - kubernetes-controller-manager=enabled
+      - kubernetes-etcd=enabled
+      - kubernetes-scheduler=enabled
+      - ucp-control-plane=enabled
+{% endfor %}
+...
