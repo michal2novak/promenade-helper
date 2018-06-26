@@ -826,28 +826,28 @@ metadata:
         name: kubernetes-etcd-{{ node_name }}
         path: .
       dest:
-        path: '.values.nodes[{{ count }} ].tls.client.cert'
+        path: '.values.nodes[{{ count }}].tls.client.cert'
     -
       src:
         schema: deckhand/CertificateKey/v1
         name: kubernetes-etcd-{{ node_name }}
         path: .
       dest:
-        path: '.values.nodes[{{ count }} ].tls.client.key'
+        path: '.values.nodes[{{ count }}].tls.client.key'
     -
       src:
         schema: deckhand/Certificate/v1
-        name: kubernetes-etcd-{{ node_name }}-peer
+        name: kubernetes-etcd-{{ node_name }}]-peer
         path: .
       dest:
-        path: '.values.nodes[{{ count }} ].tls.peer.cert'
+        path: '.values.nodes[{{ count }}].tls.peer.cert'
     -
       src:
         schema: deckhand/CertificateKey/v1
         name: kubernetes-etcd-{{ node_name }}-peer
         path: .
       dest:
-        path: '.values.nodes[{{ count }} ].tls.peer.key'
+        path: '.values.nodes[{{ count }}].tls.peer.key'
 {% set count = count + 1 %}
 {% endfor %}
 
