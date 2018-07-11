@@ -1,0 +1,3 @@
+{% for node_name, node_ip in nodes %}
+scp join-{{ node_name }}.sh chnyda@{{ node_ip }}:/home/chnyda
+{% endfor %}
