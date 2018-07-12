@@ -42,7 +42,6 @@ types:
       - calico-etcd=enabled
       - kubernetes-apiserver=enabled
       - kubernetes-controller-manager=enabled
-      - kubernetes-etcd=enabled
       - kubernetes-scheduler=enabled
       - ucp-control-plane=enabled
   openstack:
@@ -77,6 +76,8 @@ types:
       - mon01
       - mon02
       - mon03
+    labels:
+      - openstack-mon
   master:
     nodes:
       - genesis
@@ -84,4 +85,5 @@ types:
       - journal02
       - journal03
     labels:
+      - kubernetes-etcd=enabled
       - kubernetes-scheduler=enabled
