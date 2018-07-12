@@ -1,3 +1,4 @@
+#jinja2: lstrip_blocks: True
 {% for node_name, node_ip in nodes %}
 ---
 schema: promenade/KubernetesNode/v1
@@ -9,15 +10,16 @@ metadata:
     layer: site
 data:
   hostname: {{ node_name }}
-  ip: {{ node_ip}}
+  ip: {{ node_ip }}
   join_ip: {{ genesis.ip }}
   labels:
     dynamic:
-      - calico-etcd=enabled
-      - kubernetes-apiserver=enabled
-      - kubernetes-controller-manager=enabled
-      - kubernetes-etcd=enabled
-      - kubernetes-scheduler=enabled
-      - ucp-control-plane=enabled
+{% for type, elt in types.items() %}
+{% if node_name in elt['nodes'] %}
+{% for label in elt['labels'] %}
+      - {{ label }}
+{% endfor %}
+{% endif %}
+{% endfor %}
 {% endfor %}
 ...

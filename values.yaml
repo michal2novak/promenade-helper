@@ -22,4 +22,66 @@ nodes:
   journal01: 10.0.104.167
   journal02: 10.0.104.168
   journal03: 10.0.104.169
-  
+
+types:
+  common:
+    nodes:
+      - ctl01
+      - ctl02
+      - ctl03
+      - cmp01
+      - cmp02
+      - cmp03
+      - osd01
+      - osd02
+      - osd03
+      - ceilometer01
+      - ceilometer02
+      - ceilometer03
+    labels:
+      - calico-etcd=enabled
+      - kubernetes-apiserver=enabled
+      - kubernetes-controller-manager=enabled
+      - kubernetes-etcd=enabled
+      - kubernetes-scheduler=enabled
+      - ucp-control-plane=enabled
+  openstack:
+    nodes:
+      - ctl01
+      - ctl02
+      - ctl03
+      - cmp01
+      - cmp02
+      - cmp03
+      - genesis
+      - journal01
+      - journal02
+      - journal03
+    labels:
+      - openstack-control-plane=enabled
+      - openstack-compute-node=enabled
+      - openvswitch=enabled
+  ceph_osd:
+    nodes:
+      - osd01
+      - osd02
+      - osd03
+    labels:
+      - ceph-mds=enabled
+      - ceph-mon=enabled
+      - ceph-osd=enabled
+      - ceph-rgw=enabled
+      - ceph-mgr=enabled
+  lma:
+    nodes:
+      - mon01
+      - mon02
+      - mon03
+  master:
+    nodes:
+      - genesis
+      - journal01
+      - journal02
+      - journal03
+    labels:
+      - kubernetes-scheduler=enabled
