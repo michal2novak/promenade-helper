@@ -1,7 +1,7 @@
 genesis:
   hostname: genesis
   ip: 10.0.104.154
-  mgmt_interface: ens3
+  mgmt_interface: ens2
 nodes:
   ctl01: 10.0.104.151
   ctl02: 10.0.104.152
