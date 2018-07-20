@@ -1,12 +1,8 @@
 genesis:
-  hostname: genesis
-  ip: 10.0.104.154
+  hostname: ceilometer01
+  ip: 10.0.104.164
   mgmt_interface: ens2
 nodes:
-  ctl01: 10.0.104.151
-  ctl02: 10.0.104.152
-  ctl03: 10.0.104.153
-  genesis: 10.0.104.154
   osd01: 10.0.104.155
   osd02: 10.0.104.156
   osd03: 10.0.104.157
@@ -17,8 +13,6 @@ nodes:
   cmp02: 10.0.104.162
   cmp03: 10.0.104.163
   ceilometer01: 10.0.104.164
-  ceilometer02: 10.0.104.165
-  ceilometer03: 10.0.104.166
   journal01: 10.0.104.167
   journal02: 10.0.104.168
   journal03: 10.0.104.169
@@ -26,24 +20,21 @@ nodes:
 types:
   common:
     nodes:
-      - ctl01
-      - ctl02
-      - ctl03
-      - cmp01
-      - cmp02
-      - cmp03
       - osd01
       - osd02
       - osd03
+      - mon01
+      - mon02
+      - mon03
+      - cmp01
+      - cmp02
+      - cmp03
       - ceilometer01
-      - ceilometer02
-      - ceilometer03
+      - journal01
+      - journal02
+      - journal03
     labels:
       - calico-etcd=enabled
-      - kubernetes-apiserver=enabled
-      - kubernetes-controller-manager=enabled
-      - kubernetes-scheduler=enabled
-      - ucp-control-plane=enabled
   openstack:
     nodes:
       - ctl01
@@ -52,7 +43,6 @@ types:
       - cmp01
       - cmp02
       - cmp03
-      - genesis
       - journal01
       - journal02
       - journal03
@@ -80,10 +70,14 @@ types:
       - openstack-mon
   master:
     nodes:
-      - genesis
+      - ceilometer01
       - journal01
       - journal02
       - journal03
     labels:
-      - kubernetes-etcd=enabled
       - kubernetes-scheduler=enabled
+      - kubernetes-apiserver=enabled
+      - kubernetes-etcd=enabled
+      - kubernetes-controller-manager=enabled
+      - kubernetes-scheduler=enabled
+      - ucp-control-plane=enabled
