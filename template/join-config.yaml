@@ -8,6 +8,7 @@ metadata:
   layeringDefinition:
     abstract: false
     layer: site
+  storagePolicy: cleartext
 data:
   hostname: {{ node_name }}
   ip: {{ node_ip }}

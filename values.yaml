@@ -1,60 +1,47 @@
 genesis:
-  hostname: ceilometer01
-  ip: 10.0.104.164
+  hostname: ctl01
+  ip: 10.0.104.151
   mgmt_interface: ens2
 nodes:
-  osd01: 10.0.104.155
-  osd02: 10.0.104.156
-  osd03: 10.0.104.157
-  mon01: 10.0.104.158
-  mon02: 10.0.104.159
-  mon03: 10.0.104.160
+  ctl01: 10.0.104.151
+  ctl02: 10.0.104.152
+  ctl03: 10.0.104.153
   cmp01: 10.0.104.161
   cmp02: 10.0.104.162
   cmp03: 10.0.104.163
-  ceilometer01: 10.0.104.164
-  journal01: 10.0.104.167
-  journal02: 10.0.104.168
-  journal03: 10.0.104.169
 
 types:
   common:
     nodes:
-      - osd01
-      - osd02
-      - osd03
-      - mon01
-      - mon02
-      - mon03
       - cmp01
       - cmp02
       - cmp03
-      - ceilometer01
-      - journal01
-      - journal02
-      - journal03
+      - ctl01
+      - ctl02
+      - ctl03
     labels:
       - calico-etcd=enabled
-  openstack:
+  openstack_compute:
     nodes:
       - ctl01
       - ctl02
       - ctl03
-      - cmp01
-      - cmp02
-      - cmp03
-      - journal01
-      - journal02
-      - journal03
+    labels:
+      - openstack-compute-node=enabled
+      - openvswitch=enabled
+  openstack_control:
+    nodes:
+      - ctl01
+      - ctl02
+      - ctl03
     labels:
       - openstack-control-plane=enabled
-      - openstack-compute-node=enabled
       - openvswitch=enabled
   ceph_osd:
     nodes:
-      - osd01
-      - osd02
-      - osd03
+      - ctl01
+      - ctl02
+      - ctl03
     labels:
       - ceph-mds=enabled
       - ceph-mon=enabled
@@ -63,17 +50,16 @@ types:
       - ceph-mgr=enabled
   lma:
     nodes:
-      - mon01
-      - mon02
-      - mon03
+      - ctl01
+      - ctl02
+      - ctl03
     labels:
-      - openstack-mon
+      - openstack-mon=enabled
   master:
     nodes:
-      - ceilometer01
-      - journal01
-      - journal02
-      - journal03
+      - ctl01
+      - ctl02
+      - ctl03
     labels:
       - kubernetes-scheduler=enabled
       - kubernetes-apiserver=enabled
