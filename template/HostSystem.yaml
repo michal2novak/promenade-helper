@@ -71,7 +71,7 @@ data:
         =Fm3p
         -----END PGP PUBLIC KEY BLOCK-----
     additional:
-      - ceph-common=10.2.9-0ubuntu0.16.04.1
+      - ceph-common=10.2.10-0ubuntu0.16.04.1
       - curl
       - jq
     required:
