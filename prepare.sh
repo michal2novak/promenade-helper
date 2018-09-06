@@ -1,3 +1,3 @@
-#!/bim/bash
+#!/bin/bash
 
 ./generate_promenade_files.py && ./tools/simple-deployment.sh output build

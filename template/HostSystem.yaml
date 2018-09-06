@@ -38,7 +38,7 @@ data:
       kubectl: gcr.io/google_containers/hyperkube-amd64:v1.10.2
   packages:
     repositories:
-      - deb [arch=amd64] https://download.docker.com/linux/debian xenial stable
+      - deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial/stable
     keys:
       - |-
         -----BEGIN PGP PUBLIC KEY BLOCK-----

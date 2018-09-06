@@ -12,7 +12,7 @@ def generate_files():
     cur_env = Environment(loader=FileSystemLoader(THIS_DIR),
                          trim_blocks=True)
 
-    promenade_files = glob.glob("template/*.yaml")
+    promenade_files = glob.glob("template/*")
     if not os.path.exists('output'):
         os.makedirs('output')
 

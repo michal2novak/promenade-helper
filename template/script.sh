@@ -1,3 +1,4 @@
+#!/bin/bash
 {% for node_name, node_ip in nodes %}
 scp -o "StrictHostKeyChecking no" join-{{ node_name }}.sh chnyda@{{ node_ip }}:/home/chnyda
 {% endfor %}
