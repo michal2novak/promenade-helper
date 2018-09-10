@@ -4,6 +4,7 @@ genesis:
   mgmt_interface: ens3
 script:
   user: kingsalamander
+  key_file: /root/.ssh/id_rsa
 nodes:
   node01: 10.1.103.11
   node02: 10.1.103.12
