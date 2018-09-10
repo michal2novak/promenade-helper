@@ -1,4 +1,8 @@
 #!/bin/bash
 {% for node_name, node_ip in nodes %}
-scp -o "StrictHostKeyChecking no" join-{{ node_name }}.sh chnyda@{{ node_ip }}:/home/chnyda
+{% if script.user is defined %}
+scp -o "StrictHostKeyChecking no" join-{{ node_name }}.sh {{ script.user }}@{{ node_ip }}:/home/{{ script.user }}
+{% else %}
+scp -o "StrictHostKeyChecking no" join-{{ node_name }}.sh {{ node_ip }}:/home/root
+{% endif %}
 {% endfor %}
