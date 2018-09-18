@@ -1,44 +1,46 @@
 genesis:
-  hostname: node01
-  ip: 10.1.103.11
+  hostname: cfg01
+  ip: 10.1.103.10
   mgmt_interface: ens3
 script:
   user: kingsalamander
   key_file: /root/.ssh/id_rsa
 nodes:
-  node01: 10.1.103.11
-  node02: 10.1.103.12
-  node03: 10.1.103.13
+  cfg01: 10.1.103.10
+  ctl01: 10.1.103.11
+  ctl02: 10.1.103.12
+  ctl03: 10.1.103.13
 
 types:
   common:
     nodes:
-      - node01
-      - node02
-      - node03
+      - cfg01
+      - ctl01
+      - ctl02
+      - ctl03
     labels:
       - calico-etcd=enabled
   openstack_compute:
     nodes:
-      - node01
-      - node02
-      - node03
+      - ctl01
+      - ctl02
+      - ctl03
     labels:
       - openstack-compute-node=enabled
       - openvswitch=enabled
   openstack_control:
     nodes:
-      - node01
-      - node02
-      - node03
+      - ctl01
+      - ctl02
+      - ctl03
     labels:
       - openstack-control-plane=enabled
       - openvswitch=enabled
   ceph_osd:
     nodes:
-      - node01
-      - node02
-      - node03
+      - ctl01
+      - ctl02
+      - ctl03
     labels:
       - ceph-mds=enabled
       - ceph-mon=enabled
@@ -47,16 +49,17 @@ types:
       - ceph-mgr=enabled
   lma:
     nodes:
-      - node01
-      - node02
-      - node03
+      - ctl01
+      - ctl02
+      - ctl03
     labels:
       - openstack-mon=enabled
   master:
     nodes:
-      - node01
-      - node02
-      - node03
+      - ctl01
+      - ctl02
+      - ctl03
+      - cfg01
     labels:
       - kubernetes-scheduler=enabled
       - kubernetes-apiserver=enabled
