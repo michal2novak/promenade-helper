@@ -1,0 +1,3 @@
+# promenade-helper
+
+./prepare.sh
