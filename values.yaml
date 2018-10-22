@@ -19,6 +19,9 @@ nodes:
   ctl02: 10.1.103.12
   ctl03: 10.1.103.13
 
+provisioner:
+  type: ceph 
+
 types:
   common:
     nodes:
