@@ -41,6 +41,7 @@ types:
       - openvswitch=enabled
   openstack_control:
     nodes:
+      - cfg01
       - ctl01
       - ctl02
       - ctl03
@@ -60,6 +61,7 @@ types:
       - ceph-mgr=enabled
   lma:
     nodes:
+      - cfg01
       - ctl01
       - ctl02
       - ctl03
