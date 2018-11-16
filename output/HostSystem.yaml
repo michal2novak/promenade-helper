@@ -104,11 +104,7 @@ data:
         =0YYh
         -----END PGP PUBLIC KEY BLOCK-----
     additional:
-{% if provisioner.type == "ceph" %}
       - ceph-common
-{% elif provisioner.type == "nfs" %}
-      - nfs-common
-{% endif %}
       - curl
       - jq
     required:

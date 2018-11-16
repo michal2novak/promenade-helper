@@ -235,38 +235,90 @@ metadata:
         path: .
       dest:
         path: '.values.secrets.anchor.tls.key'
-{% set count = 0 %}
-{% for node_name, node_ip in nodes %}
     -
       src:
         schema: deckhand/Certificate/v1
-        name: calico-etcd-{{ node_name }}
+        name: calico-etcd-michal-1
         path: .
       dest:
-        path: '.values.nodes[{{ count }}].tls.client.cert'
+        path: '.values.nodes[0].tls.client.cert'
     -
       src:
         schema: deckhand/CertificateKey/v1
-        name: calico-etcd-{{ node_name }}
+        name: calico-etcd-michal-1
         path: .
       dest:
-        path: '.values.nodes[{{ count }}].tls.client.key'
+        path: '.values.nodes[0].tls.client.key'
     -
       src:
         schema: deckhand/Certificate/v1
-        name: calico-etcd-{{ node_name }}-peer
+        name: calico-etcd-michal-1-peer
         path: .
       dest:
-        path: '.values.nodes[{{ count }}].tls.peer.cert'
+        path: '.values.nodes[0].tls.peer.cert'
     -
       src:
         schema: deckhand/CertificateKey/v1
-        name: calico-etcd-{{ node_name }}-peer
+        name: calico-etcd-michal-1-peer
         path: .
       dest:
-        path: '.values.nodes[{{ count }}].tls.peer.key'
-{% set count = count + 1 %}
-{% endfor %}
+        path: '.values.nodes[0].tls.peer.key'
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: calico-etcd-michal-2
+        path: .
+      dest:
+        path: '.values.nodes[1].tls.client.cert'
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: calico-etcd-michal-2
+        path: .
+      dest:
+        path: '.values.nodes[1].tls.client.key'
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: calico-etcd-michal-2-peer
+        path: .
+      dest:
+        path: '.values.nodes[1].tls.peer.cert'
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: calico-etcd-michal-2-peer
+        path: .
+      dest:
+        path: '.values.nodes[1].tls.peer.key'
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: calico-etcd-michal-3
+        path: .
+      dest:
+        path: '.values.nodes[2].tls.client.cert'
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: calico-etcd-michal-3
+        path: .
+      dest:
+        path: '.values.nodes[2].tls.client.key'
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: calico-etcd-michal-3-peer
+        path: .
+      dest:
+        path: '.values.nodes[2].tls.peer.cert'
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: calico-etcd-michal-3-peer
+        path: .
+      dest:
+        path: '.values.nodes[2].tls.peer.key'
 
 data:
   chart_name: etcd
@@ -306,8 +358,7 @@ data:
         etcd: quay.io/coreos/etcd:v3.2.14
         etcdctl: quay.io/coreos/etcd:v3.2.14
     nodes:
-{% for node_name in node_keys %}
-      - name: {{ node_name }}
+      - name: michal-1
         tls:
           client:
             cert: placeholder
@@ -315,7 +366,22 @@ data:
           peer:
             cert: placeholder
             key: placeholder
-{% endfor %}
+      - name: michal-2
+        tls:
+          client:
+            cert: placeholder
+            key: placeholder
+          peer:
+            cert: placeholder
+            key: placeholder
+      - name: michal-3
+        tls:
+          client:
+            cert: placeholder
+            key: placeholder
+          peer:
+            cert: placeholder
+            key: placeholder
     service:
       name: calico-etcd
       ip: 10.96.232.136
@@ -403,7 +469,7 @@ data:
         CLUSTER_TYPE:
           - k8s
           - bgp
-        IP_AUTODETECTION_METHOD: interface={{ genesis.mgmt_interface }}
+        IP_AUTODETECTION_METHOD: interface=ens3
         WAIT_FOR_STORAGE: "true"
 
     endpoints:
@@ -809,38 +875,90 @@ metadata:
         path: .
       dest:
         path: '.values.secrets.anchor.tls.key'
-{% set count = 0 %}
-{% for node_name in node_keys %}
     -
       src:
         schema: deckhand/Certificate/v1
-        name: kubernetes-etcd-{{ node_name }}
+        name: kubernetes-etcd-michal-1
         path: .
       dest:
-        path: '.values.nodes[{{ count }}].tls.client.cert'
+        path: '.values.nodes[0].tls.client.cert'
     -
       src:
         schema: deckhand/CertificateKey/v1
-        name: kubernetes-etcd-{{ node_name }}
+        name: kubernetes-etcd-michal-1
         path: .
       dest:
-        path: '.values.nodes[{{ count }}].tls.client.key'
+        path: '.values.nodes[0].tls.client.key'
     -
       src:
         schema: deckhand/Certificate/v1
-        name: kubernetes-etcd-{{ node_name }}-peer
+        name: kubernetes-etcd-michal-1-peer
         path: .
       dest:
-        path: '.values.nodes[{{ count }}].tls.peer.cert'
+        path: '.values.nodes[0].tls.peer.cert'
     -
       src:
         schema: deckhand/CertificateKey/v1
-        name: kubernetes-etcd-{{ node_name }}-peer
+        name: kubernetes-etcd-michal-1-peer
         path: .
       dest:
-        path: '.values.nodes[{{ count }}].tls.peer.key'
-{% set count = count + 1 %}
-{% endfor %}
+        path: '.values.nodes[0].tls.peer.key'
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: kubernetes-etcd-michal-2
+        path: .
+      dest:
+        path: '.values.nodes[1].tls.client.cert'
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: kubernetes-etcd-michal-2
+        path: .
+      dest:
+        path: '.values.nodes[1].tls.client.key'
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: kubernetes-etcd-michal-2-peer
+        path: .
+      dest:
+        path: '.values.nodes[1].tls.peer.cert'
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: kubernetes-etcd-michal-2-peer
+        path: .
+      dest:
+        path: '.values.nodes[1].tls.peer.key'
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: kubernetes-etcd-michal-3
+        path: .
+      dest:
+        path: '.values.nodes[2].tls.client.cert'
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: kubernetes-etcd-michal-3
+        path: .
+      dest:
+        path: '.values.nodes[2].tls.client.key'
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: kubernetes-etcd-michal-3-peer
+        path: .
+      dest:
+        path: '.values.nodes[2].tls.peer.cert'
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: kubernetes-etcd-michal-3-peer
+        path: .
+      dest:
+        path: '.values.nodes[2].tls.peer.key'
 
 data:
   chart_name: etcd
@@ -877,8 +995,7 @@ data:
         etcd: quay.io/coreos/etcd:v3.2.14
         etcdctl: quay.io/coreos/etcd:v3.2.14
     nodes:
-{% for node_name in node_keys %}
-      - name: {{ node_name }}
+      - name: michal-1
         tls:
           client:
             cert: placeholder
@@ -886,7 +1003,22 @@ data:
           peer:
             cert: placeholder
             key: placeholder
-{% endfor %}
+      - name: michal-2
+        tls:
+          client:
+            cert: placeholder
+            key: placeholder
+          peer:
+            cert: placeholder
+            key: placeholder
+      - name: michal-3
+        tls:
+          client:
+            cert: placeholder
+            key: placeholder
+          peer:
+            cert: placeholder
+            key: placeholder
     service:
       name: kubernetes-etcd
     network:

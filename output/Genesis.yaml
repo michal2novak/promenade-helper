@@ -8,8 +8,8 @@ metadata:
     layer: site
   storagePolicy: cleartext
 data:
-  hostname: {{ genesis.hostname }}
-  ip: {{ genesis.ip }}
+  hostname: michal-1
+  ip: 10.0.0.3
   apiserver:
     command_prefix:
       - /apiserver
@@ -31,13 +31,16 @@ data:
       - kubernetes-scheduler=enabled
       - promenade-genesis=enabled
       - ucp-control-plane=enabled
-{% for type, elt in types.items() %}
-{% if genesis.hostname in elt['nodes'] %}
-{% for label in elt['labels'] %}
-      - {{ label }}
-{% endfor %}
-{% endif %}
-{% endfor %}
+      - kubernetes-scheduler=enabled
+      - kubernetes-apiserver=enabled
+      - kubernetes-etcd=enabled
+      - kubernetes-controller-manager=enabled
+      - kubernetes-scheduler=enabled
+      - ucp-control-plane=enabled
+      - openstack-mon=enabled
+      - calico-etcd=enabled
+      - openstack-control-plane=enabled
+      - openvswitch=enabled
   images:
     armada: quay.io/airshipit/armada:master
     helm:

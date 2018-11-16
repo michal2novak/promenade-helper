@@ -1,6 +1,6 @@
 genesis:
-  hostname: cfg01
-  ip: 10.1.103.10
+  hostname: michal-1
+  ip: 10.0.0.3
   mgmt_interface: ens3
   #external_ip: EXTERNAL_IP
 docker:
@@ -14,10 +14,9 @@ script:
   user: kingsalamander
   key_file: /root/.ssh/id_rsa
 nodes:
-  cfg01: 10.1.103.10
-  ctl01: 10.1.103.11
-  ctl02: 10.1.103.12
-  ctl03: 10.1.103.13
+  michal-1: 10.0.0.3
+  michal-2: 10.0.0.4
+  michal-3: 10.0.0.5
 
 provisioner:
   type: ceph 
@@ -25,34 +24,30 @@ provisioner:
 types:
   common:
     nodes:
-      - cfg01
-      - ctl01
-      - ctl02
-      - ctl03
+      - michal-1
+      - michal-2
+      - michal-3
     labels:
       - calico-etcd=enabled
   openstack_compute:
     nodes:
-      - ctl01
-      - ctl02
-      - ctl03
+      - michal-2
+      - michal-3
     labels:
       - openstack-compute-node=enabled
       - openvswitch=enabled
   openstack_control:
     nodes:
-      - cfg01
-      - ctl01
-      - ctl02
-      - ctl03
+      - michal-1
+      - michal-2
+      - michal-3
     labels:
       - openstack-control-plane=enabled
       - openvswitch=enabled
   ceph_osd:
     nodes:
-      - ctl01
-      - ctl02
-      - ctl03
+      - michal-2
+      - michal-3
     labels:
       - ceph-mds=enabled
       - ceph-mon=enabled
@@ -61,18 +56,16 @@ types:
       - ceph-mgr=enabled
   lma:
     nodes:
-      - cfg01
-      - ctl01
-      - ctl02
-      - ctl03
+      - michal-1
+      - michal-2
+      - michal-3
     labels:
       - openstack-mon=enabled
   master:
     nodes:
-      - ctl01
-      - ctl02
-      - ctl03
-      - cfg01
+      - michal-2
+      - michal-3
+      - michal-1
     labels:
       - kubernetes-scheduler=enabled
       - kubernetes-apiserver=enabled

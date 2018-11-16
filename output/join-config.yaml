@@ -1,0 +1,91 @@
+#jinja2: lstrip_blocks: True
+---
+schema: promenade/KubernetesNode/v1
+metadata:
+  schema: metadata/Document/v1
+  name: michal-1
+  layeringDefinition:
+    abstract: false
+    layer: site
+  storagePolicy: cleartext
+data:
+  hostname: michal-1
+  ip: 10.0.0.3
+  join_ip: 10.0.0.3
+  labels:
+    dynamic:
+      - kubernetes-scheduler=enabled
+      - kubernetes-apiserver=enabled
+      - kubernetes-etcd=enabled
+      - kubernetes-controller-manager=enabled
+      - kubernetes-scheduler=enabled
+      - ucp-control-plane=enabled
+      - openstack-mon=enabled
+      - calico-etcd=enabled
+      - openstack-control-plane=enabled
+      - openvswitch=enabled
+---
+schema: promenade/KubernetesNode/v1
+metadata:
+  schema: metadata/Document/v1
+  name: michal-2
+  layeringDefinition:
+    abstract: false
+    layer: site
+  storagePolicy: cleartext
+data:
+  hostname: michal-2
+  ip: 10.0.0.4
+  join_ip: 10.0.0.3
+  labels:
+    dynamic:
+      - kubernetes-scheduler=enabled
+      - kubernetes-apiserver=enabled
+      - kubernetes-etcd=enabled
+      - kubernetes-controller-manager=enabled
+      - kubernetes-scheduler=enabled
+      - ucp-control-plane=enabled
+      - openstack-mon=enabled
+      - calico-etcd=enabled
+      - openstack-compute-node=enabled
+      - openvswitch=enabled
+      - openstack-control-plane=enabled
+      - openvswitch=enabled
+      - ceph-mds=enabled
+      - ceph-mon=enabled
+      - ceph-osd=enabled
+      - ceph-rgw=enabled
+      - ceph-mgr=enabled
+---
+schema: promenade/KubernetesNode/v1
+metadata:
+  schema: metadata/Document/v1
+  name: michal-3
+  layeringDefinition:
+    abstract: false
+    layer: site
+  storagePolicy: cleartext
+data:
+  hostname: michal-3
+  ip: 10.0.0.5
+  join_ip: 10.0.0.3
+  labels:
+    dynamic:
+      - kubernetes-scheduler=enabled
+      - kubernetes-apiserver=enabled
+      - kubernetes-etcd=enabled
+      - kubernetes-controller-manager=enabled
+      - kubernetes-scheduler=enabled
+      - ucp-control-plane=enabled
+      - openstack-mon=enabled
+      - calico-etcd=enabled
+      - openstack-compute-node=enabled
+      - openvswitch=enabled
+      - openstack-control-plane=enabled
+      - openvswitch=enabled
+      - ceph-mds=enabled
+      - ceph-mon=enabled
+      - ceph-osd=enabled
+      - ceph-rgw=enabled
+      - ceph-mgr=enabled
+...
